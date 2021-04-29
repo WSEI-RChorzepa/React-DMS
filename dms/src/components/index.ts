@@ -1,5 +1,3 @@
-import Home from './Home/Home';
-import Publications from './Publications/Publications';
-import * as Common from 'components/common';
-
-export { Home, Publications, Common };
+export * as Pages from './pages';
+export * from './controls';
+export * from './common';

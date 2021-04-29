@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { Reset } from 'styled-reset';
-import GlobalStyle from 'components/GlobalStyle';
+import GlobalStyle from 'styledHelpers/GlobalStyle';
 import Routes from 'components/Routes';
 import { Layout } from 'components/common';
 

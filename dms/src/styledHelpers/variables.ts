@@ -17,8 +17,14 @@ export namespace Font {
         22: '1.4rem',
         24: '1.55rem',
     };
-    export const color = {
-        default: '#1d284b',
-        paragraphs: '#ccc',
-    };
 }
+
+export const Color = {
+    defaultFontColor: '#1d284b',
+    primary: 'rgba(52, 152, 219,1.0)',
+    danger: 'rgba(231, 76, 60,1.0)',
+    secondary: '#ccc',
+    silver: '#bdc3c7',
+    border: 'rgb(35 44 71 / 10%)',
+    boxShadow: 'rgb(35 44 71 / 20%)',
+};

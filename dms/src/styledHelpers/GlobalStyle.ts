@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import { Font, Global } from './variables';
+import { Font, Global, Color } from './variables';
 
 const GlobalStyle = createGlobalStyle`
         * {
@@ -11,13 +11,15 @@ const GlobalStyle = createGlobalStyle`
         font-family: ${Global.fontFamily};
         font-size: ${Global.fontSize};
         font-weight: ${Global.fontWeight};
-        color: ${Font.color.default};
+        color: ${Color.defaultFontColor};
         background-color: ${Global.backgroundColor}
     }
     p, 
     span {
-        color: ${Font.color.paragraphs};
+        color: ${Color.secondary};
+        font-family: 'Montserrat';
         font-weight: 200;
+        font-size: ${Font.size[12]}
     }
 `;
 
