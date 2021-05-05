@@ -8,7 +8,7 @@ interface IDropdownContext {
     setValue: (value: string) => void;
     setIcon: (type: IconType) => void;
     setOpen: (value: boolean) => void;
-    // onChange: (value: string) => void;
+    onSelect: (value: string, icon: IconType) => void;
 }
 
 const defaultContext: IDropdownContext = {
@@ -18,7 +18,7 @@ const defaultContext: IDropdownContext = {
     setValue: (value: string) => {},
     setIcon: (type: IconType) => {},
     setOpen: (value: boolean) => {},
-    // onChange: (value: string) => {},
+    onSelect: (value: string, icon: IconType) => {},
 };
 
 const DropdownContext = createContext<IDropdownContext>(defaultContext);
@@ -27,10 +27,12 @@ const DropdownProvider: React.FunctionComponent = ({ children }) => {
     const [value, setValue] = useState<string>(defaultContext.value);
     const [icon, setIcon] = useState<IconType | null>(defaultContext.icon);
     const [open, setOpen] = useState<boolean>(defaultContext.open);
-    // const onChange = (newValue: string) => {
-    //     setValue(newValue);
-    //     setOpen(false);
-    // };
+
+    const onSelect = (value: string, icon: IconType) => {
+        setValue(value);
+        setIcon(icon);
+        setOpen(false);
+    };
 
     const contextValue: IDropdownContext = {
         value,
@@ -39,7 +41,7 @@ const DropdownProvider: React.FunctionComponent = ({ children }) => {
         setValue,
         setIcon,
         setOpen,
-        // onChange,
+        onSelect,
     };
 
     return <DropdownContext.Provider value={contextValue}>{children}</DropdownContext.Provider>;

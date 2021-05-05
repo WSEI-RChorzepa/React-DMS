@@ -1,12 +1,13 @@
-import { Response, UserResponse, PhotoResponse } from './types';
-import { buildUrl, GET } from './http';
+import { Response } from "./types";
+import { buildUrl, GET } from "./http";
+import { IUser, IPhoto } from "models";
 
-const url = buildUrl('https://jsonplaceholder.typicode.com/');
+const url = buildUrl("https://jsonplaceholder.typicode.com");
 
-export const getUserData = async (userId: number): Promise<Response<UserResponse.User>> => {
-    return await GET<UserResponse.User>(url(`users/${userId}`));
+export const getUserData = async (userId: number): Promise<Response<IUser>> => {
+  return await GET<IUser>(url(`users/${userId}`));
 };
 
-export const getUserPhoto = async (userId: number): Promise<Response<PhotoResponse.Photo>> => {
-    return await GET<PhotoResponse.Photo>(url(`photos/${userId}`));
+export const getUserPhoto = async (userId: number): Promise<Response<IPhoto>> => {
+  return await GET<IPhoto>(url(`photos/${userId}`));
 };

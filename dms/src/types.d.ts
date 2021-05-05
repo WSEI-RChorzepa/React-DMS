@@ -1,31 +1,34 @@
+import { Status } from "store/types";
+
 export type Dictionary<T> = {
-    [key: string]: T;
+  [key: string]: T;
 };
 
-export type SizeType = 'small' | 'medium' | 'large';
+export type SizeType = "small" | "medium" | "large";
 
 export type IconType =
-    | 'administration'
-    | 'arrow-down'
-    | 'bell'
-    | 'cog'
-    | 'comments'
-    | 'ecosystem'
-    | 'entities'
-    | 'entities2'
-    | 'house'
-    | 'logout'
-    | 'network'
-    | 'people'
-    | 'plus'
-    | 'privacy'
-    | 'publications'
-    | 'search'
-    | 'settings'
-    | 'user-plus';
+  | "administration"
+  | "arrow-down"
+  | "bell"
+  | "cog"
+  | "comments"
+  | "ecosystem"
+  | "entities"
+  | "entities2"
+  | "house"
+  | "logout"
+  | "network"
+  | "people"
+  | "plus"
+  | "privacy"
+  | "publications"
+  | "search"
+  | "settings"
+  | "user-plus"
+  | "box";
 
-export type VerticalType = 'top' | 'bottom' | 'center';
+export type VerticalType = "top" | "bottom" | "center";
 
-export type HorizontalType = 'left' | 'right' | 'center';
+export type HorizontalType = "left" | "right" | "center";
 
-export type ShapeType = 'circle';
+export type ShapeType = "circle" | "rectangle";
