@@ -8,5 +8,6 @@ import Thumbnail from "./Thumbnail";
 import Link from "./Link";
 import Card from "./Card";
 import UserProfile from "./UserProfile";
+import Label from "./Label";
 
-export { Layout, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile };
+export { Layout, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label };

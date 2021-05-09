@@ -1,63 +1,33 @@
-import React from "react";
-import styled from "styled-components";
-import { IWorkspaceTileProps } from "./WorkspaceTile";
+import React, { useRef } from "react";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+import { useSlider } from "hooks";
 import WorkspaceTile from "./WorkspaceTile";
-
-const Workspaces: IWorkspaceTileProps[] = [
-  {
-    icon: "publications",
-    title: "Client contract",
-  },
-  {
-    icon: "publications",
-    title: "Supplier contract",
-  },
-  {
-    icon: "entities",
-    title: "Corporate",
-  },
-  {
-    icon: "ecosystem",
-    title: "Group norms",
-  },
-  {
-    icon: "ecosystem",
-    title: "Real Estate contracts",
-  },
-  {
-    icon: "publications",
-    title: "Client contract 2",
-  },
-  {
-    icon: "publications",
-    title: "Supplier contract 2",
-  },
-  {
-    icon: "entities",
-    title: "Corporate 2",
-  },
-  {
-    icon: "ecosystem",
-    title: "Group norms 2",
-  },
-  {
-    icon: "ecosystem",
-    title: "Real Estate contracts 2",
-  },
-];
-
-const Wrapper = styled.div`
-  position: relative;
-  white-space: nowrap;
-  overflow-x: hidden;
-`;
+import { Wrapper, Slider } from "./helpers";
+import source from "./source";
 
 const WorkspacesSlider: React.VoidFunctionComponent = () => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { currentStep, max, onNext, onPrev } = useSlider({ ref: ref });
+
   return (
     <Wrapper>
-      {Workspaces.map((workspace) => (
-        <WorkspaceTile key={workspace.title} icon={workspace.icon} title={workspace.title} />
-      ))}
+      <Slider.Container ref={ref} translateX={currentStep}>
+        {source.map((workspace) => (
+          <WorkspaceTile key={workspace.title} icon={workspace.icon} title={workspace.title} backgroundImage={workspace.backgroundImage} />
+        ))}
+      </Slider.Container>
+
+      {currentStep !== 0 && (
+        <Slider.Button left onClick={onPrev}>
+          <FaChevronLeft />
+        </Slider.Button>
+      )}
+
+      {currentStep >= max && (
+        <Slider.Button right onClick={onNext}>
+          <FaChevronRight />
+        </Slider.Button>
+      )}
     </Wrapper>
   );
 };

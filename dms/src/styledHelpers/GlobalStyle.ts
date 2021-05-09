@@ -27,7 +27,6 @@ const GlobalStyle = createGlobalStyle`
         font-weight: 500;
     }
 
-
     h5 {
         font-size: ${Variables.Font.size[14]};
         color: ${Variables.Color.defaultFontColor};
