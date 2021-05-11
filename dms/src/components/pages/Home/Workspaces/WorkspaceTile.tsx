@@ -3,7 +3,7 @@ import { FiUsers } from "react-icons/fi";
 import { IconType } from "types";
 import { Icon, Label } from "components/common";
 
-import { Tile } from "./helpers";
+import { Tile } from "./components";
 const { Grid, Image, IconCard, Container } = Tile;
 
 export interface IWorkspaceTileProps {

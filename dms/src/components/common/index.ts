@@ -9,5 +9,6 @@ import Link from "./Link";
 import Card from "./Card";
 import UserProfile from "./UserProfile";
 import Label from "./Label";
+import Dot from "./Dot";
 
-export { Layout, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label };
+export { Layout, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot };

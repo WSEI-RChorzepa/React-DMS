@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { IUser, IPhoto } from "models";
 import { RootState, IUserState } from "store";
+import { localStorage } from "utils/browserStorageHelpers";
 import * as UserService from "services/userService";
 
 const initialState: IUserState = {
@@ -17,6 +18,23 @@ export const fetchUserDataAsync = createAsyncThunk<{ data: IUser; photo: IPhoto 
   return {
     data: userData.body as IUser,
     photo: userPhoto.body as IPhoto,
+  };
+});
+
+export const fetchUsersDataAsync = createAsyncThunk<{ users: IUser[] }>("users/fetch", async () => {
+  const key = "users";
+  let users: IUser[] = [];
+
+  if (localStorage.hasKey(key)) {
+    users = localStorage.get<IUser[]>(key) as IUser[];
+  } else {
+    const usersData = await UserService.getUsersData();
+    localStorage.set(key, usersData.body as IUser[]);
+    users = usersData.body as IUser[];
+  }
+
+  return {
+    users,
   };
 });
 

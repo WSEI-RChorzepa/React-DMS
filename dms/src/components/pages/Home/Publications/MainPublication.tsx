@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { IPostWithImage } from "models";
 import { Thumbnail } from "components/common";
-import { Body, Text, Release } from "./Helpers";
+import { Body, Text, Release } from "./components";
 
 export const Wrapper = styled.div`
   position: relative;

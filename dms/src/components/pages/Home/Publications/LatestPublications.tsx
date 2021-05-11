@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { IPostWithImage } from "models";
 import { Thumbnail } from "components/common";
-import { Body, Text, Release, ReleaseDate, Author } from "./Helpers";
+import { Body, Text, Release, ReleaseDate, Author } from "./components";
 import { Variables } from "styledHelpers";
 
 const Wrapper = styled.div`

@@ -1,4 +1,4 @@
-import { IPhoto, IUser, IPostWithImage } from "models";
+import { IPhoto, IUser, IPostWithImage, IComment } from "models";
 
 type Status = null | "pending" | "rejected" | "fulfilled";
 
@@ -13,4 +13,8 @@ export interface IUserState extends IState {
 
 export interface IPostState extends IState {
   posts: IPostWithImage[] | [];
+}
+
+export interface ICommentState extends IState {
+  comments: IComment[];
 }

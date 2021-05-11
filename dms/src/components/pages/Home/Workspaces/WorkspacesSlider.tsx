@@ -2,7 +2,7 @@ import React, { useRef } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 import { useSlider } from "hooks";
 import WorkspaceTile from "./WorkspaceTile";
-import { Wrapper, Slider } from "./helpers";
+import { Wrapper, Slider } from "./components";
 import source from "./source";
 
 const WorkspacesSlider: React.VoidFunctionComponent = () => {

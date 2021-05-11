@@ -4,6 +4,10 @@ import { IUser, IPhoto } from "models";
 
 const url = buildUrl("https://jsonplaceholder.typicode.com");
 
+export const getUsersData = async (): Promise<Response<IUser[]>> => {
+  return await GET<IUser[]>(url("users"));
+};
+
 export const getUserData = async (userId: number): Promise<Response<IUser>> => {
   return await GET<IUser>(url(`users/${userId}`));
 };

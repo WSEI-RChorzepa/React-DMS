@@ -1,10 +1,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useAppDispatch } from "hooks";
-import { fetchUserDataAsync } from "slices/userSlice";
+import { fetchUserDataAsync, fetchUsersDataAsync } from "slices/userSlice";
+import { fetchCommentsAsync } from "slices/commentSlice";
 import LastPublications from "./Publications/Publications";
 import Workspaces from "./Workspaces/Workspaces";
-import Resume from "./Resume";
+import Resume from "./Resume/Resume";
 
 const Wrapper = styled.div`
   > div {
@@ -17,6 +18,8 @@ const Home: React.VoidFunctionComponent = () => {
 
   useEffect(() => {
     dispatch(fetchUserDataAsync());
+    dispatch(fetchUsersDataAsync());
+    dispatch(fetchCommentsAsync());
   }, []);
 
   return (
