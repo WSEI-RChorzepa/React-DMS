@@ -26,7 +26,9 @@ const Comment: React.VoidFunctionComponent<ICommentProps> = (props) => (
           <li>
             <Dot />
           </li>
-          <li>updated 3 days ago by John Doe</li>
+          <li>
+            updated 3 days ago by <strong> {props.owner}</strong>
+          </li>
         </ul>
       </grid.Footer>
     </grid.Container>

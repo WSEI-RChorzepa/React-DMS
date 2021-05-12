@@ -31,7 +31,10 @@ namespace Grid {
   export const Main = styled.div`
     grid-area: main;
     grid-row: 2;
-    padding: 1rem;
+
+    > div {
+      padding-bottom: 1rem;
+    }
   `;
 }
 

@@ -10,5 +10,6 @@ import Card from "./Card";
 import UserProfile from "./UserProfile";
 import Label from "./Label";
 import Dot from "./Dot";
+import Pagination from "./Pagination";
 
-export { Layout, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot };
+export { Layout, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination };

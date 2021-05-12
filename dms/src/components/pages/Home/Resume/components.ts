@@ -82,3 +82,25 @@ export namespace comment {
     `;
   }
 }
+
+export namespace dropdownOption {
+  export const Wrapper = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0.3rem 1rem;
+  `;
+
+  export const Button = styled.button`
+    margin-bottom: 5px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+    }
+  `;
+}

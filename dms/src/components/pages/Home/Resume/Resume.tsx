@@ -1,12 +1,13 @@
 import React, { useContext } from "react";
 import Comment from "./Comment";
 import { header } from "./components";
+import { Pagination } from "components";
 import Dropdown from "./Dropdown";
 import Search from "./Search";
 import { ResumeProvider, ResumeContext } from "./context";
 
 const Resume: React.VoidFunctionComponent = () => {
-  const { comments } = useContext(ResumeContext);
+  const { comments, pagination } = useContext(ResumeContext);
 
   return (
     <div>
@@ -18,7 +19,14 @@ const Resume: React.VoidFunctionComponent = () => {
         </header.Navigation>
       </header.Container>
 
-      {comments.length ? comments.map((comment) => <Comment key={comment.id} {...comment} />) : null}
+      {comments.length ? (
+        <>
+          {comments.map((comment) => (
+            <Comment key={comment.id} {...comment} />
+          ))}
+          <Pagination {...pagination} />
+        </>
+      ) : null}
     </div>
   );
 };
