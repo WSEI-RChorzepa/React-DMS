@@ -1,7 +1,7 @@
 import { Icon } from "components";
-import { DropdownNavigation } from "./abstracts";
+import { DropdownNavigation } from "components/controls/Dropdown/types";
 
-export class NavigationFactory {
+class Source {
   static createNavigationOptions(): DropdownNavigation.IOption[] {
     return [
       {
@@ -77,3 +77,5 @@ export class NavigationFactory {
     ];
   }
 }
+
+export default Source;

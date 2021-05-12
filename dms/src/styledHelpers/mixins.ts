@@ -79,7 +79,7 @@ export const ImgSize = (size: SizeType) => {
 };
 
 export const ShapeCircle = () => css`
-  background-color: ${Variables.Color.secondary};
+  background-color: ${Variables.Color.silver};
   border-radius: 50%;
   padding: 5px 6px;
 `;

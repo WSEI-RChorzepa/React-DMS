@@ -16,8 +16,8 @@ const SvgIcon = styled.img<{ size: SizeType; stacked?: boolean }>`
 
 const Shape = styled.div<{ type?: ShapeType }>`
   position: relative;
-  ${(props) => props.type === "circle" && Mixin.ShapeCircle()}
-  ${(props) => props.type === "rectangle" && Mixin.ShapeRectangle()}
+  ${(props) => props.type === "circle" && Mixin.ShapeCircle()};
+  ${(props) => props.type === "rectangle" && Mixin.ShapeRectangle()};
 `;
 
 const Icon: FunctionComponent<IconProps> = (props) => {

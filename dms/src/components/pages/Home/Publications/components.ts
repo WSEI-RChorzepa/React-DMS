@@ -43,3 +43,21 @@ export const ReleaseDate = styled.span`
 export const Author = styled.span`
   font-size: ${Variables.Font.size[10]};
 `;
+
+export namespace publications {
+  export const Grid = styled.div`
+    position: relative;
+    display: grid;
+    grid-template-areas: "main publications";
+    grid-template-columns: auto 2fr;
+  `;
+
+  export const Container = styled.div`
+    grid-area: publications;
+    padding: 0.5rem 1rem;
+
+    > a {
+      margin-top: 20px;
+    }
+  `;
+}

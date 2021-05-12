@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { DropdownProvider } from "./context";
-import { Icon, Input, Dropdown as DropdownComponent } from "components";
-import { NavigationFactory, StyledDropdownNavigation as Styled, DropdownNavigation } from "./infrastructure";
-import { Empty } from "components/common";
-
+import { DropdownProvider } from "components/controls/Dropdown/context";
+import { DropdownNavigation } from "components/controls/Dropdown/types";
+import { dropdownNavigation } from "components/controls/Dropdown/components";
 import DropdownNavigationOptions from "./DropdownNavigationOptions";
+import { Icon, Input, Dropdown as DropdownComponent } from "components";
+import { Empty } from "components/common";
+import source from "./source";
 import Profile from "./Profile";
 import Logout from "./Logout";
+
+const { Filter, Options } = dropdownNavigation;
 
 const DropdownNavigationComponent: React.VoidFunctionComponent<DropdownNavigation.IProps> = (props) => {
   let timeout: ReturnType<typeof setTimeout>;
@@ -34,13 +37,13 @@ const DropdownNavigationComponent: React.VoidFunctionComponent<DropdownNavigatio
 
   return (
     <DropdownComponent defaultValue="Home" defultIcon="house" arrow={true}>
-      <Styled.Filter>
+      <Filter>
         <Input append={<Icon type="search" />} placeholder="Filter..." block onChange={handleFilter} />
-      </Styled.Filter>
-      <Styled.Options>
+      </Filter>
+      <Options>
         {options && options.map((option) => <DropdownNavigationOptions key={option.category} {...option} />)}
         {!hasOptions && <Empty message="No result" />}
-      </Styled.Options>
+      </Options>
       <Profile />
       <Logout />
     </DropdownComponent>
@@ -49,7 +52,7 @@ const DropdownNavigationComponent: React.VoidFunctionComponent<DropdownNavigatio
 
 const Component: React.VoidFunctionComponent = () => (
   <DropdownProvider>
-    <DropdownNavigationComponent options={NavigationFactory.createNavigationOptions()} />
+    <DropdownNavigationComponent options={source.createNavigationOptions()} />
   </DropdownProvider>
 );
 

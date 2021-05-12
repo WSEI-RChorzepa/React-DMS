@@ -1,45 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
-import styled, { css } from "styled-components";
 import { v4 } from "uuid";
-import { Variables } from "styledHelpers";
-
-interface IPaginationProps {
-  page: number;
-  pages: number;
-  pageSize: number;
-  onPageChange: (pageNumber: number) => void;
-}
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-`;
-
-const Button = styled.button<{ active?: boolean }>`
-  background: transparent;
-  border: none;
-  color: ${Variables.Color.primary};
-  font-weight: 500;
-  font-size: ${Variables.Font.size[12]};
-  padding: 0.5rem;
-
-  &:hover {
-    cursor: pointer;
-  }
-
-  ${(props) =>
-    props.active &&
-    css`
-      background: ${Variables.Color.primary};
-      color: #fff;
-    `}
-`;
-
-type PaginationEvent = {
-  [key: string]: (value?: number) => void;
-};
+import { Wrapper, Button } from "./components";
+import { IPaginationProps, PaginationEvent } from "./types";
 
 const Pagination: React.VoidFunctionComponent<IPaginationProps> = (props) => {
   const [numbers, setNumbers] = useState<number[]>([]);

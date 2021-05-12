@@ -1,5 +1,4 @@
-import Input from './Input';
-import Dropdown from './Dropdown/Dropdown';
-import DropdowonNavigation from './Dropdown/DropdownNavigation';
+import Input from "./Input";
+import Dropdown from "./Dropdown/Dropdown";
 
-export { Input, DropdowonNavigation, Dropdown };
+export { Input, Dropdown };

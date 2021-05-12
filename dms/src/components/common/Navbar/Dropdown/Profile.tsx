@@ -1,51 +1,11 @@
 import React, { useContext } from "react";
-import styled from "styled-components";
 import { user } from "slices/userSlice";
-import { DropdownContext } from "./context";
+import { DropdownContext } from "components/controls/Dropdown/context";
 import { useAppSelector } from "hooks";
-import { Variables } from "styledHelpers";
+import { profile } from "./components";
 import { Icon, Thumbnail, Link } from "components/common";
 
-const Wrapper = styled.div`
-  position: relative;
-  width: 100%;
-  border-top: 1px solid ${Variables.Color.border};
-  padding: 0.7rem;
-`;
-
-const Account = styled.strong`
-  display: block;
-  margin-bottom: 0.5rem;
-`;
-
-const Info = styled.div`
-  display: grid;
-  grid-template-areas: "thumbnail data";
-  grid-template-columns: 40px auto;
-
-  > img {
-    grid-area: thumbnail;
-  }
-
-  > div {
-    grid-area: data;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-start;
-
-    > a {
-      margin-top: 0.2rem;
-    }
-  }
-`;
-
-const Links = styled.div`
-  margin-top: 1rem;
-  > a {
-    margin-bottom: 0.5rem;
-  }
-`;
+const { Wrapper, Account, Info, Links } = profile;
 
 const Profile: React.VoidFunctionComponent = () => {
   const { onSelect } = useContext(DropdownContext);

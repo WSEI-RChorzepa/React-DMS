@@ -1,7 +1,10 @@
 import React, { useContext } from "react";
 import { useHistory } from "react-router-dom";
-import { DropdownContext } from "./context";
-import { StyledDropdownNavigation as Styled, DropdownNavigation } from "./infrastructure";
+import { DropdownContext } from "components/controls/Dropdown/context";
+import { DropdownNavigation } from "components/controls/Dropdown/types";
+import { dropdownNavigation } from "components/controls/Dropdown/components";
+
+const { Wrapper, Prepend, Value, Category } = dropdownNavigation;
 
 const Option: React.VoidFunctionComponent<DropdownNavigation.IOptionProps> = ({ value, icon, route, prepend }) => {
   const history = useHistory();
@@ -13,10 +16,10 @@ const Option: React.VoidFunctionComponent<DropdownNavigation.IOptionProps> = ({ 
   };
 
   return (
-    <Styled.Wrapper onClick={handleOnSelect}>
-      <Styled.Prepend>{prepend}</Styled.Prepend>
-      <Styled.Value>{value}</Styled.Value>
-    </Styled.Wrapper>
+    <Wrapper onClick={handleOnSelect}>
+      <Prepend>{prepend}</Prepend>
+      <Value>{value}</Value>
+    </Wrapper>
   );
 };
 
@@ -28,7 +31,7 @@ const DropdownNavigationOptions: React.VoidFunctionComponent<{ category: string;
     <React.Fragment>
       {options.length ? (
         <>
-          <Styled.Category>{category}</Styled.Category>
+          <Category>{category}</Category>
           {options.map((option) => (
             <Option key={option.value} {...option} />
           ))}

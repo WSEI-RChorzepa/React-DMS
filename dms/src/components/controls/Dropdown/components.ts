@@ -17,7 +17,7 @@ const contentMixin = (icon: boolean, arrow: boolean): FlattenSimpleInterpolation
   `;
 };
 
-export namespace StyledDropdown {
+export namespace dropdown {
   export const Wrapper = styled.div`
     position: relative;
   `;
@@ -58,7 +58,7 @@ export namespace StyledDropdown {
     left: 0;
     background-color: #fff;
     width: 100%;
-    z-index: 9;
+    z-index: 9999;
     ${(props) => Mixin.open(props.open)};
     ${Mixin.transition};
     box-shadow: 2px 2px 5px ${Variables.Color.boxShadow};
@@ -82,7 +82,7 @@ export namespace StyledDropdown {
   `;
 }
 
-export namespace StyledDropdownNavigation {
+export namespace dropdownNavigation {
   export const Wrapper = styled.button`
     display: grid;
     grid-template-areas: "prepend value";

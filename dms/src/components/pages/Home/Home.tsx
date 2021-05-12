@@ -1,8 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import styled from "styled-components";
-import { useAppDispatch } from "hooks";
+import { useAppDispatch, useAppSelector } from "hooks";
+import { Spinner } from "components";
 import { fetchUserDataAsync, fetchUsersDataAsync } from "slices/userSlice";
-import { fetchCommentsAsync } from "slices/commentSlice";
+import { fetchCommentsAsync, comments } from "slices/commentSlice";
 import LastPublications from "./Publications/Publications";
 import Workspaces from "./Workspaces/Workspaces";
 import Resume from "./Resume/Resume";
@@ -13,7 +15,20 @@ const Wrapper = styled.div`
   }
 `;
 
+const Loader = styled.div`
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  p {
+    text-align: center;
+    margin-bottom: 0.5rem;
+  }
+`;
+
 const Home: React.VoidFunctionComponent = () => {
+  const { status } = useAppSelector(comments);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
@@ -24,9 +39,21 @@ const Home: React.VoidFunctionComponent = () => {
 
   return (
     <Wrapper>
-      <LastPublications />
-      <Workspaces />
-      <Resume />
+      {status === "pending" ? (
+        <Loader>
+          <div>
+            <Spinner />
+            <p>LOADING DATA</p>
+            <p>please wait</p>
+          </div>
+        </Loader>
+      ) : (
+        <>
+          <LastPublications />
+          <Workspaces />
+          <Resume />
+        </>
+      )}
     </Wrapper>
   );
 };
