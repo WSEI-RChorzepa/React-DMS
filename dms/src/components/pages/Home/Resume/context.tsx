@@ -10,7 +10,7 @@ const defaultContext: IResumeContext = {
   pagination: {
     page: 0,
     pages: 0,
-    perPage: 10,
+    pageSize: 10,
     onPageChange: (pageNumber: number) => {},
   },
   filterByTitle: (value: string) => {},
@@ -32,10 +32,12 @@ const ResumeProvider: React.FunctionComponent = ({ children }) => {
   }, [comments]);
 
   const filterByTitle = (value: string): void => {
+    paginationState.onPageChange(1);
     paginationState.setElements(comments.filter((comment) => comment.name.toLocaleLowerCase().includes(value.toLocaleLowerCase())));
   };
 
   const filterByOwner = (id: number): void => {
+    paginationState.onPageChange(1);
     paginationState.setElements(comments.filter((comment) => comment.postId === id));
   };
 
@@ -45,7 +47,7 @@ const ResumeProvider: React.FunctionComponent = ({ children }) => {
     comments: paginationState.currentElements,
     pagination: {
       page: paginationState.currentPage,
-      perPage: paginationState.elementsPerPage,
+      pageSize: paginationState.elementsPerPage,
       pages: paginationState.pages,
       onPageChange: paginationState.onPageChange,
     },

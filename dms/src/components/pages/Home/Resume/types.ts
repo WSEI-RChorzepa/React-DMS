@@ -12,7 +12,7 @@ export interface ICommentProps {
 export interface IPagination {
   page: number;
   pages: number;
-  perPage: number;
+  pageSize: number;
   onPageChange: (pageNumber: number) => void;
 }
 
