@@ -2,12 +2,11 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useAppDispatch, useAppSelector } from "hooks";
-import { Spinner } from "components";
+import { Spinner, Comments } from "components";
 import { fetchUserDataAsync, fetchUsersDataAsync } from "slices/userSlice";
 import { fetchCommentsAsync, comments } from "slices/commentSlice";
 import LastPublications from "./Publications/Publications";
 import Workspaces from "./Workspaces/Workspaces";
-import Resume from "./Resume/Resume";
 
 const Wrapper = styled.div`
   > div {
@@ -51,7 +50,7 @@ const Home: React.VoidFunctionComponent = () => {
         <>
           <LastPublications />
           <Workspaces />
-          <Resume />
+          <Comments title="Resume your work" />
         </>
       )}
     </Wrapper>

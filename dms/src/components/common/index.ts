@@ -12,5 +12,6 @@ import Label from "./Label";
 import Dot from "./Dot";
 import Pagination from "./Pagination/Pagination";
 import Spinner from "./Spinner";
+import Comments from "./Comments/Comments";
 
-export { Layout, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination, Spinner };
+export { Layout, Comments, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination, Spinner };

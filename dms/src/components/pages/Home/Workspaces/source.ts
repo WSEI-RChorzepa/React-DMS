@@ -1,4 +1,4 @@
-import { IWorkspaceTileProps } from "./WorkspaceTile";
+import { IWorkspaceTileProps } from "./types";
 import contract from "assets/images/contract.jpg";
 import office from "assets/images/office.jpg";
 import estate from "assets/images/estate.jpg";

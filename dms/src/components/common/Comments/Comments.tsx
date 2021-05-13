@@ -6,13 +6,13 @@ import Dropdown from "./Dropdown";
 import Search from "./Search";
 import { ResumeProvider, ResumeContext } from "./context";
 
-const Resume: React.VoidFunctionComponent = () => {
+const Resume: React.VoidFunctionComponent<{ title: string }> = ({ title }) => {
   const { comments, pagination } = useContext(ResumeContext);
 
   return (
     <div>
       <header.Container>
-        <header.Title>Resume your work</header.Title>
+        <header.Title>{title}</header.Title>
         <header.Navigation>
           <Search />
           <Dropdown />
@@ -31,9 +31,9 @@ const Resume: React.VoidFunctionComponent = () => {
   );
 };
 
-const Component: React.VoidFunctionComponent = () => (
+const Component: React.VoidFunctionComponent<{ title: string }> = (props) => (
   <ResumeProvider>
-    <Resume />
+    <Resume {...props} />
   </ResumeProvider>
 );
 
