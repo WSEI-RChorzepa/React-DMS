@@ -4,6 +4,7 @@ import userReducer from "slices/userSlice";
 import postReducer from "slices/postsSlice";
 import commentsReducer from "slices/commentSlice";
 import workspaceReducer from "slices/workspaceSlice";
+import tasksReducer from "slices/taskSlice";
 
 export const store = configureStore({
   reducer: {
@@ -11,6 +12,7 @@ export const store = configureStore({
     post: postReducer,
     comments: commentsReducer,
     workspaces: workspaceReducer,
+    tasks: tasksReducer,
   },
 });
 

@@ -1,27 +1,34 @@
 import { useState } from "react";
+import { pagination } from "types";
 
-interface IProps<T> {
-  elements: T[];
-}
-
-const usePagination = <T>(props: IProps<T>) => {
+const usePagination = <T>(props: pagination.hook.IProps<T>) => {
   const [elements, setElements] = useState(props.elements);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [elementsPerPage, setElementsPerPage] = useState(10);
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(10);
 
-  const indexOfLastElement = currentPage * elementsPerPage;
-  const indexOfFirstElement = indexOfLastElement - elementsPerPage;
+  const indexOfLastElement = page * pageSize;
+  const indexOfFirstElement = indexOfLastElement - pageSize;
   const currentElements = elements.slice(indexOfFirstElement, indexOfLastElement);
-  const onPageChange = (pageNumber: number) => setCurrentPage(pageNumber);
+  const onPageChange = (pageNumber: number) => setPage(pageNumber);
 
   return {
     pages: elements.length,
-    setElements,
-    currentPage,
+    page,
     currentElements,
-    elementsPerPage,
+    pageSize,
+    setElements,
     onPageChange,
   };
 };
+
+export function DefaultPaginationProps<T>(): pagination.IContextProps<T> {
+  return {
+    collection: [] as T[],
+    page: 0,
+    pages: 0,
+    pageSize: 10,
+    onPageChange: (pageNumber: number) => {},
+  };
+}
 
 export default usePagination;

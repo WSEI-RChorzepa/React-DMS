@@ -1,4 +1,6 @@
-import Input from "./Input";
 import Dropdown from "./Dropdown/Dropdown";
+import DropdownFollowed from "./DropdownFollowed";
 
-export { Input, Dropdown };
+export * from "./Input";
+export * from "./InputSearch";
+export { Dropdown, DropdownFollowed };

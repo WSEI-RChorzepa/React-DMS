@@ -4,10 +4,10 @@ import { header } from "./components";
 import { Pagination } from "components";
 import Dropdown from "./Dropdown";
 import Search from "./Search";
-import { ResumeProvider, ResumeContext } from "./context";
+import { CommentsProvider, CommentsContext } from "./context";
 
 const Resume: React.VoidFunctionComponent<{ title: string }> = ({ title }) => {
-  const { comments, pagination } = useContext(ResumeContext);
+  const { comments, pagination } = useContext(CommentsContext);
 
   return (
     <div>
@@ -32,9 +32,9 @@ const Resume: React.VoidFunctionComponent<{ title: string }> = ({ title }) => {
 };
 
 const Component: React.VoidFunctionComponent<{ title: string }> = (props) => (
-  <ResumeProvider>
+  <CommentsProvider>
     <Resume {...props} />
-  </ResumeProvider>
+  </CommentsProvider>
 );
 
 export default Component;

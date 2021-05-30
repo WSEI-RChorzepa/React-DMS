@@ -1,24 +1,53 @@
 import React, { useContext } from "react";
+import styled from "styled-components";
 import { DropdownProvider, DropdownContext } from "components/controls/Dropdown/context";
 import { Dropdown as DropdownComponent, Dot } from "components";
-import { dropdownOption } from "./components";
-import { IDropdownOption } from "./types";
 import { user as userState } from "slices/userSlice";
-import { CommentsContext } from "./context";
 import { useAppSelector } from "hooks";
 import { IUser } from "models";
 
-const FollowedDropdown: React.VoidFunctionComponent = () => {
+export namespace dropdownOption {
+  export const Wrapper = styled.div`
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 0.3rem 1rem;
+  `;
+
+  export const Button = styled.button`
+    margin-bottom: 5px;
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-weight: 600;
+
+    &:hover {
+      cursor: pointer;
+    }
+  `;
+}
+
+interface IDropdownOption {
+  value: string;
+  onClick: () => void;
+}
+
+interface IDropdownProps {
+  onChange: (value: number) => void;
+  reset: () => void;
+}
+
+const FollowedDropdown: React.VoidFunctionComponent<IDropdownProps> = ({ onChange, reset }) => {
   const { user } = useAppSelector(userState);
   const { onSelect } = useContext(DropdownContext);
-  const { filterByOwner, reset } = useContext(CommentsContext);
 
   const handleSelect = (value: "all" | "my") => {
     onSelect(value.toLocaleUpperCase(), "cog");
 
     if (value.toLocaleLowerCase() === "my") {
       const userId = (user as IUser).id;
-      filterByOwner(userId);
+      onChange(userId);
     } else {
       reset();
     }
@@ -48,9 +77,9 @@ const FollowedDropdown: React.VoidFunctionComponent = () => {
   );
 };
 
-const Component: React.VoidFunctionComponent = () => (
+const Component: React.VoidFunctionComponent<IDropdownProps> = (props) => (
   <DropdownProvider>
-    <FollowedDropdown />
+    <FollowedDropdown {...props} />
   </DropdownProvider>
 );
 

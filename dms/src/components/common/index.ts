@@ -13,5 +13,8 @@ import Dot from "./Dot";
 import Pagination from "./Pagination/Pagination";
 import Spinner from "./Spinner";
 import Comments from "./Comments/Comments";
+import Button from "./Button";
+import Flex from "./Flex";
+import Loader from "./Loader";
 
-export { Layout, Comments, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination, Spinner };
+export { Layout, Comments, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination, Spinner, Button, Flex, Loader };

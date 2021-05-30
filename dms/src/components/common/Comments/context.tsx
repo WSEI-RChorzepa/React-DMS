@@ -2,10 +2,10 @@
 import React, { createContext, useEffect } from "react";
 import { useAppSelector, usePagination } from "hooks";
 import { comments as commentState } from "slices/commentSlice";
-import { IResumeContext } from "./types";
+import { ICommentsContext } from "./types";
 import { ICommentWithOwner } from "models";
 
-const defaultContext: IResumeContext = {
+const defaultContext: ICommentsContext = {
   comments: [],
   pagination: {
     page: 0,
@@ -18,9 +18,9 @@ const defaultContext: IResumeContext = {
   reset: () => {},
 };
 
-const ResumeContext = createContext<IResumeContext>(defaultContext);
+const CommentsContext = createContext<ICommentsContext>(defaultContext);
 
-const ResumeProvider: React.FunctionComponent = ({ children }) => {
+const CommentsProvider: React.FunctionComponent = ({ children }) => {
   const { comments } = useAppSelector(commentState);
 
   const paginationState = usePagination<ICommentWithOwner>({
@@ -43,11 +43,11 @@ const ResumeProvider: React.FunctionComponent = ({ children }) => {
 
   const reset = () => paginationState.setElements(comments);
 
-  const value: IResumeContext = {
+  const value: ICommentsContext = {
     comments: paginationState.currentElements,
     pagination: {
-      page: paginationState.currentPage,
-      pageSize: paginationState.elementsPerPage,
+      page: paginationState.page,
+      pageSize: paginationState.pageSize,
       pages: paginationState.pages,
       onPageChange: paginationState.onPageChange,
     },
@@ -56,7 +56,7 @@ const ResumeProvider: React.FunctionComponent = ({ children }) => {
     reset,
   };
 
-  return <ResumeContext.Provider value={value}>{children}</ResumeContext.Provider>;
+  return <CommentsContext.Provider value={value}>{children}</CommentsContext.Provider>;
 };
 
-export { ResumeContext, ResumeProvider };
+export { CommentsContext, CommentsProvider };

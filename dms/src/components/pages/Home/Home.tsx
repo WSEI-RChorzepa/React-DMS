@@ -1,10 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
-import { useAppDispatch, useAppSelector } from "hooks";
-import { Spinner, Comments } from "components";
-import { fetchUserDataAsync, fetchUsersDataAsync } from "slices/userSlice";
-import { fetchCommentsAsync, comments } from "slices/commentSlice";
+import { useAppSelector } from "hooks";
+import { Spinner, Comments, Loader } from "components";
+import { comments } from "slices/commentSlice";
 import LastPublications from "./Publications/Publications";
 import Workspaces from "./Workspaces/Workspaces";
 
@@ -14,27 +13,8 @@ const Wrapper = styled.div`
   }
 `;
 
-const Loader = styled.div`
-  height: 50vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  p {
-    text-align: center;
-    margin-bottom: 0.5rem;
-  }
-`;
-
 const Home: React.VoidFunctionComponent = () => {
   const { status } = useAppSelector(comments);
-  const dispatch = useAppDispatch();
-
-  useEffect(() => {
-    dispatch(fetchUserDataAsync());
-    dispatch(fetchUsersDataAsync());
-    dispatch(fetchCommentsAsync());
-  }, []);
 
   return (
     <Wrapper>

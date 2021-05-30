@@ -1,10 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from "react";
 import { v4 } from "uuid";
+import { pagination } from "types";
 import { Wrapper, Button } from "./components";
-import { IPaginationProps, PaginationEvent } from "./types";
 
-const Pagination: React.VoidFunctionComponent<IPaginationProps> = (props) => {
+const Pagination: React.VoidFunctionComponent<pagination.IProps> = (props) => {
   const [numbers, setNumbers] = useState<number[]>([]);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ const Pagination: React.VoidFunctionComponent<IPaginationProps> = (props) => {
     setNumbers(nums);
   }, [props.pages, props.pageSize]);
 
-  const Events: PaginationEvent = {
+  const Events: pagination.PaginationEvent = {
     previous: () => props.onPageChange(numbers[numbers.indexOf(props.page) - 1]),
     next: () => props.onPageChange(numbers[numbers.indexOf(props.page) + 1]),
     first: () => props.onPageChange(numbers[0]),

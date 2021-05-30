@@ -1,4 +1,4 @@
-import { IPhoto, IUser, IPostWithImage, ICommentWithOwner, IWorkspace } from "models";
+import { IPhoto, IUser, IPostWithImage, ICommentWithOwner, IWorkspace, ITask, ITaskWithUser } from "models";
 
 type Status = null | "pending" | "rejected" | "fulfilled";
 
@@ -21,4 +21,8 @@ export interface ICommentState extends IState {
 
 export interface IWorkspaceState {
   workspaces: IWorkspace[];
+}
+
+export interface ITasksState extends IState {
+  data: ITaskWithUser[];
 }

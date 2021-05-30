@@ -16,7 +16,7 @@ export interface IPagination {
   onPageChange: (pageNumber: number) => void;
 }
 
-export interface IResumeContext {
+export interface ICommentsContext {
   comments: ICommentWithOwner[];
   pagination: IPagination;
   filterByTitle: (value: string) => void;

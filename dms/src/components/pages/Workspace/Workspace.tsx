@@ -9,7 +9,7 @@ const Workspace: React.VoidFunctionComponent<IWorkspaceProps> = ({ data }) => {
     <div>
       <Card>
         <ImageContainer>
-          <img src={data.backgroundImage} alt="workspace image" />
+          <img src={data.backgroundImage} alt="workspace_image" />
         </ImageContainer>
         <Body>
           <IconContainer>

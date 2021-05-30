@@ -1,4 +1,4 @@
-import { Status } from "store/types";
+import React from "react";
 
 export type Dictionary<T> = {
   [key: string]: T;
@@ -32,3 +32,29 @@ export type VerticalType = "top" | "bottom" | "center";
 export type HorizontalType = "left" | "right" | "center";
 
 export type ShapeType = "circle" | "rectangle";
+
+export interface IEntity {}
+
+export namespace pagination {
+  export namespace hook {
+    export interface IProps<T> {
+      elements: T[];
+    }
+  }
+
+  export interface IProps {
+    page: number;
+    pages: number;
+    pageSize: number;
+    onPageChange: (pageNumber: number) => void;
+    opUpdate?: React.Dispatch<React.SetStateAction<T>>;
+  }
+
+  export type PaginationEvent = {
+    [key: string]: (value?: number) => void;
+  };
+
+  export interface IContextProps<T> extends IProps {
+    collection: T[];
+  }
+}

@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Icon, Input } from "components";
-import { ResumeContext } from "./context";
+import { CommentsContext } from "./context";
 
 const Search: React.VoidFunctionComponent = () => {
-  const { filterByTitle } = useContext(ResumeContext);
+  const { filterByTitle } = useContext(CommentsContext);
 
   let timeout: ReturnType<typeof setTimeout>;
 
