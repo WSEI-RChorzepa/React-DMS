@@ -1,17 +1,19 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect } from "react";
 import { Context, Provider } from "./context";
 import { ITaskWithUser } from "models";
 import { Pagination, Button, Flex } from "components";
 import { usePagination } from "hooks";
 import { pagination } from "types";
-import Filter from "./Filter";
-import Task from "./Task";
 import { TasksWrapperComponents as Styled } from "./components";
 import { BsThreeDots } from "react-icons/bs";
 import { BiSort } from "react-icons/bi";
 import { IoMdResize } from "react-icons/io";
 import { FaShare, FaFilter } from "react-icons/fa";
 import { DisplayType } from "components/pages/Entities/types";
+import Filter from "./Filter";
+import Task from "./Task";
+import FilterConditions from "./FilterConditions";
 
 const Tasks: React.VoidFunctionComponent<{ display: DisplayType }> = ({ display }) => {
   const { collection, page, pages, pageSize, onPageChange } = useContext(Context);
@@ -49,7 +51,7 @@ const Component: React.VoidFunctionComponent<{ tasks: ITaskWithUser[]; display: 
     <Provider configuration={value}>
       <Styled.Grid>
         <Styled.Grid.Configuration>
-          <Flex direction="row" justifyContent="flex-start" alignItems="flex-start">
+          <Flex direction="row" justifyContent="flex-start" alignItems="center">
             <Button>
               <BsThreeDots />
             </Button>
@@ -71,6 +73,7 @@ const Component: React.VoidFunctionComponent<{ tasks: ITaskWithUser[]; display: 
           <Filter elements={tasks} />
         </Styled.Grid.Filter>
       </Styled.Grid>
+      <FilterConditions />
       <Tasks display={display} />
     </Provider>
   );

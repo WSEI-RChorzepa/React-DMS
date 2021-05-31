@@ -4,10 +4,10 @@ import { Icon, Button, Flex, Spinner, Loader } from "components";
 import { Header } from "./components";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { fetchTasksAsync, tasks } from "slices/taskSlice";
-import Tasks from "./Tasks/Tasks";
 import { BsGridFill } from "react-icons/bs";
 import { FaBars } from "react-icons/fa";
 import { DisplayType } from "./types";
+import Tasks from "./Tasks/Tasks";
 
 const Entities: React.VoidFunctionComponent = () => {
   const dispatch = useAppDispatch();
@@ -49,7 +49,9 @@ const Entities: React.VoidFunctionComponent = () => {
           </Loader>
         </>
       ) : (
-        <Tasks tasks={data} display={display} />
+        <>
+          <Tasks tasks={data} display={display} />
+        </>
       )}
     </div>
   );

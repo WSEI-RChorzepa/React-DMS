@@ -15,7 +15,6 @@ const StyledButton = styled.button<IButtonProps>`
   align-items: center;
   border: none;
   background: transparent;
-  margin-bottom: 0.5rem;
   ${(props) =>
     props.selected &&
     css`

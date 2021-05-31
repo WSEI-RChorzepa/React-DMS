@@ -2,7 +2,6 @@ import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
 import { Color } from "styledHelpers/variables";
 import * as Mixin from "styledHelpers/mixins";
-import { Icon } from "components";
 
 const Wrapper = styled.div<{ block?: boolean }>`
   position: relative;
@@ -34,7 +33,7 @@ const Append = styled(ChildWrapper)`
 const StyledInput = styled.input<Props>`
   ${Mixin.fontFamily()}
   ${Mixin.border()}
-    height: 35px;
+  height: 35px;
   padding-left: 10px;
 
   ${(props) =>

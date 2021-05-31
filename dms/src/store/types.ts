@@ -1,4 +1,4 @@
-import { IPhoto, IUser, IPostWithImage, ICommentWithOwner, IWorkspace, ITask, ITaskWithUser } from "models";
+import { IPhoto, IUser, IPostWithImage, ICommentWithOwner, IWorkspace, ITaskWithUser } from "models";
 
 type Status = null | "pending" | "rejected" | "fulfilled";
 

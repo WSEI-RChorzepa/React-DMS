@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { fetchUserDataAsync, fetchUsersDataAsync, user } from "slices/userSlice";
