@@ -2,27 +2,25 @@
 import React, { useContext, useEffect } from "react";
 import { Context, Provider } from "./context";
 import { ITaskWithUser } from "models";
-import { Pagination, Button, Flex } from "components";
+import { Pagination } from "components";
+import { TasksWrapperComponents as Styled } from "./components";
 import { usePagination } from "hooks";
 import { pagination } from "types";
-import { TasksWrapperComponents as Styled } from "./components";
-import { BsThreeDots } from "react-icons/bs";
-import { BiSort } from "react-icons/bi";
-import { IoMdResize } from "react-icons/io";
-import { FaShare, FaFilter } from "react-icons/fa";
-import { DisplayType } from "components/pages/Entities/types";
-import Filter from "./Filter";
+import Filter from "../Filter";
 import Task from "./Task";
-import FilterConditions from "./FilterConditions";
+import ActionsBar from "../ActionsBar";
+import FilterConditions from "../FilterConditions";
+import { useEntitiesContext } from "../context";
 
-const Tasks: React.VoidFunctionComponent<{ display: DisplayType }> = ({ display }) => {
+const Tasks: React.VoidFunctionComponent = () => {
   const { collection, page, pages, pageSize, onPageChange } = useContext(Context);
+  const { displayType } = useEntitiesContext();
 
   return (
     <div>
       {collection && (
         <>
-          <Styled.Container display={display}>
+          <Styled.Container display={displayType}>
             {collection.map((task) => (
               <Task key={task.id} {...task} />
             ))}
@@ -34,13 +32,13 @@ const Tasks: React.VoidFunctionComponent<{ display: DisplayType }> = ({ display 
   );
 };
 
-const Component: React.VoidFunctionComponent<{ tasks: ITaskWithUser[]; display: DisplayType }> = ({ tasks, display }) => {
+const Component: React.VoidFunctionComponent<{ tasks: ITaskWithUser[] }> = ({ tasks }) => {
   const pagination = usePagination({ elements: tasks });
 
   const value: pagination.IContextProps<ITaskWithUser> = {
     ...pagination,
     collection: pagination.currentElements,
-    opUpdate: pagination.setElements,
+    onUpdate: pagination.setElements,
   };
 
   useEffect(() => {
@@ -51,30 +49,14 @@ const Component: React.VoidFunctionComponent<{ tasks: ITaskWithUser[]; display: 
     <Provider configuration={value}>
       <Styled.Grid>
         <Styled.Grid.Configuration>
-          <Flex direction="row" justifyContent="flex-start" alignItems="center">
-            <Button>
-              <BsThreeDots />
-            </Button>
-            <Button>
-              <BiSort /> Sort
-            </Button>
-            <Button>
-              <FaFilter /> Filter
-            </Button>
-            <Button>
-              <IoMdResize />
-            </Button>
-            <Button>
-              <FaShare /> Share
-            </Button>
-          </Flex>
+          <ActionsBar />
         </Styled.Grid.Configuration>
         <Styled.Grid.Filter>
           <Filter elements={tasks} />
         </Styled.Grid.Filter>
       </Styled.Grid>
       <FilterConditions />
-      <Tasks display={display} />
+      <Tasks />
     </Provider>
   );
 };

@@ -1,7 +1,7 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import NavbarComponent from "../Navbar/Navbar";
 
-export const Wrapper = styled.div`
+const gridWithNavigation = () => css`
   display: grid;
   grid-template-columns: 250px calc(100% - 250px);
   grid-template-rows: 50px calc(100vh - 50px);
@@ -10,6 +10,25 @@ export const Wrapper = styled.div`
     "navigation main";
   width: 100%;
   position: relative;
+`;
+
+const gridWithoutNavigation = () => css`
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 50px calc(100vh - 50px);
+  grid-template-areas:
+    "header header"
+    "main main";
+  width: 100%;
+  position: relative;
+
+  > div:nth-child(2) {
+    display: none;
+  }
+`;
+
+export const Wrapper = styled.div<{ showNavigation: boolean }>`
+  ${(props) => (props.showNavigation ? gridWithNavigation() : gridWithoutNavigation())}
 `;
 
 export const Navbar = styled(NavbarComponent)`

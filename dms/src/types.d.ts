@@ -47,7 +47,7 @@ export namespace pagination {
     pages: number;
     pageSize: number;
     onPageChange: (pageNumber: number) => void;
-    opUpdate?: React.Dispatch<React.SetStateAction<T>>;
+    onUpdate?: React.Dispatch<React.SetStateAction<T>>;
   }
 
   export type PaginationEvent = {

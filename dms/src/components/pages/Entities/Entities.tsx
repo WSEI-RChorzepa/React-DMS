@@ -4,14 +4,15 @@ import { Icon, Button, Flex, Spinner, Loader } from "components";
 import { Header } from "./components";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { fetchTasksAsync, tasks } from "slices/taskSlice";
-import { BsGridFill } from "react-icons/bs";
-import { FaBars } from "react-icons/fa";
 import { DisplayType } from "./types";
 import Tasks from "./Tasks/Tasks";
+import { EntitiesContext } from "./context";
+import { FaBars, BsGridFill } from "./Icons";
 
 const Entities: React.VoidFunctionComponent = () => {
   const dispatch = useAppDispatch();
   const [display, setDisplay] = useState<DisplayType>("mosaic");
+  const [showFilterConditions, setFilterConditions] = useState<boolean>(false);
   const { data, status } = useAppSelector(tasks);
 
   useEffect(() => {
@@ -21,7 +22,13 @@ const Entities: React.VoidFunctionComponent = () => {
   }, []);
 
   return (
-    <div>
+    <EntitiesContext.Provider
+      value={{
+        displayType: display,
+        showFilterConditions: showFilterConditions,
+        toogleFilterConditions: () => setFilterConditions(!showFilterConditions),
+      }}
+    >
       <Header>
         <Flex direction="row" justifyContent="flex-start" alignItems="flex-start">
           <h5>Entities</h5>
@@ -50,10 +57,10 @@ const Entities: React.VoidFunctionComponent = () => {
         </>
       ) : (
         <>
-          <Tasks tasks={data} display={display} />
+          <Tasks tasks={data} />
         </>
       )}
-    </div>
+    </EntitiesContext.Provider>
   );
 };
 

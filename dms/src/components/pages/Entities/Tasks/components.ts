@@ -12,12 +12,13 @@ export namespace TasksWrapperComponents {
   export const Grid: any = styled.div`
     display: grid;
     grid-template-columns: 2fr 1fr;
-    margin-top: 0.5rem;
+    margin: 0.5rem 0;
   `;
 
   Grid.Configuration = styled.div`
     grid-column: 1;
     display: flex;
+    width: 100%;
   `;
 
   Grid.Filter = styled.div`

@@ -5,7 +5,4 @@ import { DefaultPaginationProps } from "hooks/usePagination";
 
 export const Context = createContext(DefaultPaginationProps<ITaskWithUser>());
 
-export const Provider: React.FunctionComponent<{ configuration: pagination.IContextProps<ITaskWithUser> }> = ({
-  configuration: pagination,
-  children,
-}) => <Context.Provider value={pagination}>{children}</Context.Provider>;
+export const Provider: React.FunctionComponent<{ configuration: pagination.IContextProps<ITaskWithUser> }> = ({ configuration: pagination, children }) => <Context.Provider value={pagination}>{children}</Context.Provider>;

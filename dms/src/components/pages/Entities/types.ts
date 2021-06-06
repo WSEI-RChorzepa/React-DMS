@@ -22,3 +22,9 @@ export interface IFilter {
   field: Field;
   operator: Operator;
 }
+
+export interface IEntitiesContext {
+  displayType: DisplayType;
+  showFilterConditions: boolean;
+  toogleFilterConditions: () => void;
+}
