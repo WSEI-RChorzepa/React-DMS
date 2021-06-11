@@ -58,3 +58,46 @@ export namespace pagination {
     collection: T[];
   }
 }
+
+export interface IMainInformationProps {
+  name: string;
+  company: string;
+  city: string;
+  position: string;
+  phone: string;
+  email: string;
+}
+
+export interface IDetailsProps {
+  expertise: string[];
+  specialities: string[];
+  admissionToPracticeLaw: string[];
+  counties: string[];
+  hourlyFee: string;
+  termsAndConditions: string;
+  file: string;
+  propsals: IPropsals[];
+  internalCorrespondants: IInternalCorrespondants[];
+}
+
+export interface IColumn {
+  value: string | number;
+}
+
+export type Collection = Array<{ [key: string]: string | number }>;
+
+export interface IPropsals {
+  name: string;
+  entity: string;
+  location: string;
+  expertise: string;
+  date: string;
+  firm: string;
+}
+
+export interface IInternalCorrespondants {
+  firstname: string;
+  lastName: string;
+  message: string;
+  profile: string;
+}

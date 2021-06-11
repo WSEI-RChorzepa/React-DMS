@@ -12,7 +12,9 @@ const Profile: React.VoidFunctionComponent = () => {
       <Grid>
         <Details>
           <Thumbnail src={photo?.thumbnailUrl} />
-          <Name>{data?.name}</Name>
+          <Link to="/profile">
+            <Name>{data?.name}</Name>
+          </Link>
           <Company>Job title - {data?.company.name}</Company>
         </Details>
         <Divider />

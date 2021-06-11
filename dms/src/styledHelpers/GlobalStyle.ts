@@ -43,6 +43,30 @@ const GlobalStyle = createGlobalStyle`
         }
     }
 
+    table {
+    
+
+        thead {
+            tr {
+                padding: 1rem 0;
+                th {
+                    padding: .5rem 0 1rem;
+                    text-align: left;
+                    font-weight: 500;
+                    padding-right: 2.5rem;
+                }
+            }
+        }
+        tbody {
+            tr {
+                td {
+                    padding-right: 2.5rem;
+                    padding-bottom: .5rem;
+                }
+            }
+        }
+    }
+
 `;
 
 export default GlobalStyle;

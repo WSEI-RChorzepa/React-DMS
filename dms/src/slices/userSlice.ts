@@ -1,6 +1,7 @@
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk, PayloadAction } from "@reduxjs/toolkit";
 import { IUser, IPhoto } from "models";
 import { RootState, IUserState } from "store";
+import { IMainInformationProps } from "types";
 import { localStorage } from "utils/browserStorageHelpers";
 import * as UserService from "services/userService";
 
@@ -41,19 +42,36 @@ export const fetchUsersDataAsync = createAsyncThunk<{ users: IUser[] }>("users/f
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    updatePersonalInfo: (state, action: PayloadAction<IMainInformationProps>): any => {
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          name: action.payload.name,
+        },
+      };
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUserDataAsync.pending, (state) => {
-        state.status = "pending";
+        return {
+          ...state,
+          status: "pending",
+        };
       })
       .addCase(fetchUserDataAsync.fulfilled, (state, action) => {
-        state.status = "fulfilled";
-        state.user = action.payload.data;
-        state.photo = action.payload.photo;
+        return {
+          ...state,
+          status: "fulfilled",
+          user: action.payload.data,
+          photo: action.payload.photo,
+        };
       });
   },
 });
 
+export const { updatePersonalInfo } = userSlice.actions;
 export const user = (state: RootState) => state.user;
 export default userSlice.reducer;

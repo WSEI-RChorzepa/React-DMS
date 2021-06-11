@@ -1,10 +1,13 @@
 import styled from "styled-components";
 import * as Mixin from "styledHelpers/mixins";
+import { Variables } from "styledHelpers";
 
-const Select = styled.select`
+const Select = styled.select<{ block?: boolean }>`
   ${Mixin.fontFamily()};
   ${Mixin.border()};
-  height: 35px;
+  ${(props) => Mixin.block(props.block)}
+  height: 30px;
+  border-radius: 2px;
   padding: 0 10px;
 
   &:hover {
@@ -18,6 +21,11 @@ const Select = styled.select`
 
   &::-ms-expand {
     display: none;
+  }
+
+  &:disabled {
+    border: 1px solid transparent;
+    background: ${Variables.Color.border};
   }
 `;
 

@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from "react";
-import { Icon, Button, Flex, Spinner, Loader } from "components";
+import { Icon, Button, Flex, Spinner, Loader, PageHeader } from "components";
 import { Header } from "./components";
 import { useAppDispatch, useAppSelector } from "hooks";
 import { fetchTasksAsync, tasks } from "slices/taskSlice";
@@ -30,12 +30,7 @@ const Entities: React.VoidFunctionComponent = () => {
       }}
     >
       <Header>
-        <Flex direction="row" justifyContent="flex-start" alignItems="flex-start">
-          <h5>Entities</h5>
-          <Button>
-            <Icon type="cog" />
-          </Button>
-        </Flex>
+        <PageHeader title="Entities" icon={<Icon type="cog" />} />
         <Flex direction="row" justifyContent="center" alignItems="center">
           <Button onClick={() => setDisplay("mosaic")} selected={display === "mosaic"} size="lg">
             <BsGridFill /> Mosaic

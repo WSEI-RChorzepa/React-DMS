@@ -16,6 +16,7 @@ const Routes: VoidFunctionComponent = () => (
     <Route path={"/publications"} exact component={Pages.Publications} />
     <Route path="/workspace/:id" render={(props) => <Pages.Workspace data={getWorkspace(+props.match.params.id)} />} />
     <Route path="/entities" exact component={Pages.Entities} />
+    <Route path="/profile" exact component={Pages.Profile} />
     <Route path="*" component={Pages.Error404} />
   </Switch>
 );

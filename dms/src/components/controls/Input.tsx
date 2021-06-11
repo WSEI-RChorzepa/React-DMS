@@ -2,6 +2,7 @@ import React, { forwardRef } from "react";
 import styled, { css } from "styled-components";
 import { Color } from "styledHelpers/variables";
 import * as Mixin from "styledHelpers/mixins";
+import { Variables } from "styledHelpers";
 
 const Wrapper = styled.div<{ block?: boolean }>`
   position: relative;
@@ -33,7 +34,8 @@ const Append = styled(ChildWrapper)`
 const StyledInput = styled.input<Props>`
   ${Mixin.fontFamily()}
   ${Mixin.border()}
-  height: 35px;
+  height: 30px;
+  border-radius: 2px;
   padding-left: 10px;
 
   ${(props) =>
@@ -51,6 +53,11 @@ const StyledInput = styled.input<Props>`
 
   &::placeholder {
     color: ${Color.secondary};
+  }
+
+  &:disabled {
+    border: 1px solid transparent;
+    background: ${Variables.Color.border};
   }
 `;
 

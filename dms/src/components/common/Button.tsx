@@ -46,7 +46,7 @@ const StyledButton = styled.button<IButtonProps>`
 
 const Button: React.FunctionComponent<IButtonProps> = (props) => {
   return (
-    <StyledButton selected={props.selected} size={props.size} onClick={props.onClick}>
+    <StyledButton selected={props.selected} size={props.size} onClick={props.onClick} type="button">
       {props.children}
     </StyledButton>
   );

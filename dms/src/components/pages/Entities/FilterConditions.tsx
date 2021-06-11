@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import toastr from "toastr";
 import { Flex } from "components/common";
 import { Button, Select, Input } from "components";
 import { Type, Field, Operator, IFilter } from "./types";
@@ -12,7 +13,10 @@ const FilterConditions: React.FunctionComponent = () => {
   const { showFilterConditions } = useEntitiesContext();
 
   const addConditions = () => {
-    if (selectedType === null) return;
+    if (selectedType === null) {
+      toastr.info("Please select one of the available filter conditions.");
+      return;
+    }
 
     setConditions((oldState) => {
       return [

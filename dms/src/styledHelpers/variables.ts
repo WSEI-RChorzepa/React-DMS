@@ -4,6 +4,7 @@ export namespace Global {
   export const fontWeight = 400;
   export const backgroundColor = "#f5f7f9";
   export const lineHeight = "26px";
+  export const inputHeight = "30px";
 }
 
 export namespace Font {
@@ -28,4 +29,5 @@ export const Color = {
   silver: "#bdc3c7",
   border: "rgb(35 44 71 / 10%)",
   boxShadow: "rgb(35 44 71 / 10%)",
+  selected: "rgba(0,0,0,.1)",
 };

@@ -16,5 +16,6 @@ import Comments from "./Comments/Comments";
 import Button from "./Button";
 import Flex from "./Flex";
 import Loader from "./Loader";
+import PageHeader from "./PageHeader";
 
-export { Layout, Comments, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination, Spinner, Button, Flex, Loader };
+export { Layout, Comments, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination, Spinner, Button, Flex, Loader, PageHeader };

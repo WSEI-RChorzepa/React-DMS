@@ -6,7 +6,6 @@ const Card = styled.div`
   background-color: #fff;
   border-radius: 2px;
   ${Mixin.boxShadow()};
-  overflow: hidden;
   margin-bottom: 0.5rem;
 `;
 
