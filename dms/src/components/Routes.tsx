@@ -13,7 +13,6 @@ const getWorkspace = (id: number): IWorkspace => {
 const Routes: VoidFunctionComponent = () => (
   <Switch>
     <Route path={["/", "/home"]} exact component={Pages.Home} />
-    <Route path={"/publications"} exact component={Pages.Publications} />
     <Route path="/workspace/:id" render={(props) => <Pages.Workspace data={getWorkspace(+props.match.params.id)} />} />
     <Route path="/entities" exact component={Pages.Entities} />
     <Route path="/profile" exact component={Pages.Profile} />

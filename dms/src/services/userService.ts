@@ -1,7 +1,6 @@
+import * as Service from "./genericService";
 import { Response } from "./types";
 import { IUser, IPhoto } from "models";
-
-import * as Service from "./genericService";
 
 export const getUsersData = async (): Promise<Response<IUser[]>> => Service.all<IUser[]>("users");
 

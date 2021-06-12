@@ -19,7 +19,7 @@ const FormComponent: React.VoidFunctionComponent = () => {
   return (
     <>
       <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
-        {({ values }: FormikProps<IDetailsProps>) => (
+        {({ values, isValid, errors }: FormikProps<IDetailsProps>) => (
           <Form>
             <Fieldset disabled={disabled}>
               <Section disabled={disabled}>

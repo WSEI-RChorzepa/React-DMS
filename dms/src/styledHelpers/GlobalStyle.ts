@@ -8,13 +8,35 @@ const GlobalStyle = createGlobalStyle`
         -webkit-font-smoothing: antialiased;
         -moz-osx-font-smoothing: grayscale;
     }
+
     body {
         font-family: ${Global.fontFamily};
         font-size: ${Global.fontSize};
         font-weight: ${Global.fontWeight};
         color: ${Color.defaultFontColor};
-        background-color: ${Global.backgroundColor}
+        background-color: ${Global.backgroundColor};
+
+        &::-webkit-scrollbar-track
+        {
+            box-shadow: inset 0 0 10px rgba(0,0,0,0.3);
+            border-radius: 2px;
+            background-color: #FFF;
+        }
+
+        &::-webkit-scrollbar
+        {
+            width: 12px;
+            background-color: #F5F5F5;
+        }
+
+        &::-webkit-scrollbar-thumb
+        {
+            border-radius: 2px;
+            box-shadow: inset 0 0 10px rgba(0,0,0,.3);
+            background-color: ${Variables.Color.silver};
+        }
     }
+
     p, 
     span {
         color: ${Color.secondary};

@@ -1,13 +1,5 @@
+import * as Service from "./genericService";
 import { Response } from "./types";
-import { buildUrl, GET } from "./http";
 import { IPost } from "models";
 
-const url = buildUrl("https://jsonplaceholder.typicode.com");
-
-export const getPosts = async (): Promise<Response<IPost[]>> => {
-  return await GET<IPost[]>(url("/posts"));
-};
-
-export const getPostsByUserId = async (userId: number): Promise<Response<IPost[]>> => {
-  return await GET<IPost[]>(url(`posts?userId=${userId}`));
-};
+export const getPostsByUserId = async (userId: number): Promise<Response<IPost[]>> => Service.byQuery<IPost[]>("posts", `?userId=${userId}`);

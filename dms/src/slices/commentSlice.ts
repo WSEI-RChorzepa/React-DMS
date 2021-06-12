@@ -42,11 +42,17 @@ export const commentSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchCommentsAsync.pending, (state) => {
-        state.status = "pending";
+        return {
+          ...state,
+          status: "pending",
+        };
       })
       .addCase(fetchCommentsAsync.fulfilled, (state, action) => {
-        state.status = "fulfilled";
-        state.comments = action.payload.comments;
+        return {
+          ...state,
+          status: "fulfilled",
+          comments: action.payload.comments,
+        };
       });
   },
 });

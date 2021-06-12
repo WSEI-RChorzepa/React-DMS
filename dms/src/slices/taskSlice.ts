@@ -37,11 +37,17 @@ export const todosSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTasksAsync.pending, (state) => {
-        state.status = "pending";
+        return {
+          ...state,
+          status: "pending",
+        };
       })
       .addCase(fetchTasksAsync.fulfilled, (state, action) => {
-        state.status = "fulfilled";
-        state.data = action.payload.tasks;
+        return {
+          ...state,
+          status: "fulfilled",
+          data: action.payload.tasks,
+        };
       });
   },
 });

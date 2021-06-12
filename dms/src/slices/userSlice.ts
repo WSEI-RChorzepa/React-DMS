@@ -49,6 +49,16 @@ export const userSlice = createSlice({
         user: {
           ...state.user,
           name: action.payload.name,
+          phone: action.payload.phone,
+          email: action.payload.email,
+          company: {
+            ...state.user?.company,
+            name: action.payload.company,
+          },
+          address: {
+            ...state.user?.address,
+            city: action.payload.city,
+          },
         },
       };
     },

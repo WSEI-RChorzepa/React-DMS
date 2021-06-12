@@ -40,11 +40,17 @@ export const postSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchPostsAsync.pending, (state) => {
-        state.status = "pending";
+        return {
+          ...state,
+          status: "pending",
+        };
       })
       .addCase(fetchPostsAsync.fulfilled, (state, action) => {
-        state.status = "fulfilled";
-        state.posts = action.payload.posts;
+        return {
+          ...state,
+          status: "fulfilled",
+          posts: action.payload.posts,
+        };
       });
   },
 });

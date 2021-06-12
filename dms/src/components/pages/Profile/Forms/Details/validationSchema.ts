@@ -30,7 +30,6 @@ export const schema = Yup.object().shape({
   ),
   amountOfFees: Yup.array().of(
     Yup.object().shape({
-      year: Yup.string().required("Please input Year value."),
       costCenter: Yup.string().required("Please input Cost center value."),
       totalAmount: Yup.string().required("Please input Total amount value."),
       lawFirm: Yup.string().required("Please input Law firm value."),

@@ -1,5 +1,6 @@
 import { VoidFunctionComponent, useState } from "react";
 import styled from "styled-components";
+import toastr from "toastr";
 import { useFormikContext } from "formik";
 import { FaPlusCircle, FaEdit, FaSave, FaTimes, FaTrash } from "react-icons/fa";
 import { Flex } from "components";
@@ -56,7 +57,7 @@ export const Remove: VoidFunctionComponent<{ onClick: () => void }> = (props) =>
 
 export const EditGroup: VoidFunctionComponent<{ toggleMode: (open: boolean) => void }> = ({ toggleMode }) => {
   const [editMode, setEditMode] = useState(false);
-  const { submitForm, resetForm } = useFormikContext();
+  const { submitForm, resetForm, isValid, errors } = useFormikContext();
 
   const handleOpenEditMode = () => {
     setEditMode(true);
@@ -70,9 +71,20 @@ export const EditGroup: VoidFunctionComponent<{ toggleMode: (open: boolean) => v
   };
 
   const handleSubmit = () => {
-    submitForm();
-    setEditMode(false);
-    toggleMode(true);
+    if (isValid) {
+      submitForm();
+      setEditMode(false);
+      toggleMode(true);
+    } else {
+      let message = "";
+      const errorsCollection = errors as { [key: string]: string };
+
+      for (let key in errorsCollection) {
+        message += `${errorsCollection[key]} <br>`;
+      }
+
+      toastr.error(`Please correct the following errors and submit the form again. <br><br> ${message}`, "Validation error.");
+    }
   };
 
   return (
