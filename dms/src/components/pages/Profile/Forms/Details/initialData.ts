@@ -1,4 +1,4 @@
-import { Collection, IPropsals, IInternalCorrespondants } from "types";
+import { IPropsals, IInternalCorrespondants, IInternalReviews, IAmountOfFees } from "types";
 
 export const expertise: string[] = ["Mergers and acquisition"];
 
@@ -12,14 +12,10 @@ export const internalCorrespondants: IInternalCorrespondants[] = [
   {
     firstname: "John",
     lastName: "Doe",
-    message: "Message",
-    profile: "Profile",
   },
   {
     firstname: "Mike",
     lastName: "Doe",
-    message: "Message",
-    profile: "Profile",
   },
 ];
 
@@ -50,7 +46,7 @@ export const propsals: IPropsals[] = [
   },
 ];
 
-export const internalReviews: Collection = [
+export const internalReviews: IInternalReviews[] = [
   {
     name: "Operation time",
     entity: "Renault Corporation",
@@ -74,7 +70,7 @@ export const internalReviews: Collection = [
   },
 ];
 
-export const amountOfFees: Collection = [
+export const amountOfFees: IAmountOfFees[] = [
   {
     year: 2019,
     costCenter: "CS 153",

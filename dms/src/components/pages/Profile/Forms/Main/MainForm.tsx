@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { Form, FormikProps, Formik } from "formik";
 import { IMainInformationProps } from "types";
-import { InputField, SelectField, EditButton } from "components/formik";
+import { InputField, SelectField, Button } from "components/formik";
 import { schema } from "./validationSchema";
 import { PersonalInfo } from "../components";
 import { useMainInformation } from "./useMainInformation";
@@ -27,7 +27,7 @@ const FormComponent: React.VoidFunctionComponent = () => {
                 <InputField name="email" type="email" placeholder="Email address" />
               </PersonalInfo.Grid>
             </fieldset>
-            <EditButton toggleMode={setDisabled} />
+            <Button.EditGroup toggleMode={setDisabled} />
           </Form>
         )}
       </Formik>

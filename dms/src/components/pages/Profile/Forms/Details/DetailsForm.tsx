@@ -1,59 +1,82 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Form, FormikProps, Formik, FieldArray } from "formik";
 import { IDetailsProps } from "types";
-import { SectionTitle } from "./components";
-import { TagBoxField, EditButton, GridField } from "components/formik";
-import { InputField } from "components/formik";
+import { Sticky } from "components";
+import { Section, SectionTitle, Fieldset, TagBoxGrid } from "./components";
+import { InputField, TagBoxField, Button } from "components/formik";
 import { schema } from "./validationSchema";
 import { useDetails } from "./useDetails";
-import * as Dictionaries from "./dictionaries";
+import * as initialData from "./initialData";
+
+import * as Grids from "./Grids";
 
 const FormComponent: React.VoidFunctionComponent = () => {
-  const ref = useRef<HTMLFormElement>(null);
   const { initialValues, handleSubmit } = useDetails();
   const [disabled, setDisabled] = useState(true);
+
+  useEffect(() => {}, []);
 
   return (
     <>
       <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
-        {(formikProps: FormikProps<IDetailsProps>) => (
-          <Form ref={ref}>
-            <fieldset disabled={disabled}>
-              <FieldArray name="expertise" render={(props) => <TagBoxField disabled={disabled} {...props} label="Expertise" values={(props.form.values as IDetailsProps).expertise} dictionary={Dictionaries.expertise} />} />
-              <FieldArray
-                name="specialities"
-                render={(props) => <TagBoxField disabled={disabled} {...props} label="Specialities" values={(props.form.values as IDetailsProps).specialities} dictionary={Dictionaries.specialities} />}
-              />
-              <FieldArray
-                name="admissionToPracticeLaw"
-                render={(props) => (
-                  <TagBoxField disabled={disabled} {...props} label="Admission to practice law" values={(props.form.values as IDetailsProps).admissionToPracticeLaw} dictionary={Dictionaries.admissionToPracticeLaw} />
-                )}
-              />
-              <FieldArray name="counties" render={(props) => <TagBoxField disabled={disabled} {...props} label="Counties" values={(props.form.values as IDetailsProps).counties} dictionary={Dictionaries.counties} />} />
+        {({ values }: FormikProps<IDetailsProps>) => (
+          <Form>
+            <Fieldset disabled={disabled}>
+              <Section disabled={disabled}>
+                <TagBoxGrid>
+                  <FieldArray name="expertise" render={(props) => <TagBoxField label="Expertise" disabled={disabled} {...props} values={(props.form.values as IDetailsProps).expertise} dictionary={initialData.expertise} />} />
+                  <FieldArray
+                    name="specialities"
+                    render={(props) => <TagBoxField disabled={disabled} {...props} label="Specialities" values={(props.form.values as IDetailsProps).specialities} dictionary={initialData.specialities} />}
+                  />
+                </TagBoxGrid>
 
-              <SectionTitle>Panel informations</SectionTitle>
+                <TagBoxGrid>
+                  <FieldArray
+                    name="admissionToPracticeLaw"
+                    render={(props) => (
+                      <TagBoxField disabled={disabled} {...props} label="Admission to practice law" values={(props.form.values as IDetailsProps).admissionToPracticeLaw} dictionary={initialData.admissionToPracticeLaw} />
+                    )}
+                  />
+                  <FieldArray name="counties" render={(props) => <TagBoxField disabled={disabled} {...props} label="Counties" values={(props.form.values as IDetailsProps).counties} dictionary={initialData.counties} />} />
+                </TagBoxGrid>
+              </Section>
 
-              <InputField name="hourlyFee" type="text" placeholder="" label="Hourly fee" />
-              <InputField name="termsAndConditions" type="text" placeholder="" label="Terms & conditions" />
-              <InputField name="file" type="file" placeholder="" />
+              <Section disabled={disabled}>
+                <SectionTitle>Panel informations</SectionTitle>
+                <InputField name="hourlyFee" type="text" placeholder="" label="Hourly fee" />
+                <InputField name="termsAndConditions" type="text" placeholder="" label="Terms & conditions" />
+                <InputField name="file" type="file" placeholder="" />
+              </Section>
 
-              <SectionTitle>Service & projects</SectionTitle>
-              <p>Corporate M&A and international qcquisitions</p>
+              <Section disabled={disabled}>
+                <SectionTitle>Service & projects</SectionTitle>
+                <p>Corporate M&A and international qcquisitions</p>
 
-              <SectionTitle>Internal correspondants</SectionTitle>
-              <FieldArray name="internalCorrespondants" render={(props) => <GridField {...props} disabled={disabled} headers={["First name", "Last name", "Message", "Profile"]} data={Dictionaries.internalCorrespondants} />} />
+                <SectionTitle>Internal correspondants</SectionTitle>
+                <FieldArray name="internalCorrespondants">{(props) => <Grids.InternalCorrespondants disabled={disabled} values={values.internalCorrespondants} push={props.push} remove={props.remove} />}</FieldArray>
+              </Section>
 
-              <SectionTitle>Propsals</SectionTitle>
-              <FieldArray name="propsals" render={(props) => <GridField {...props} disabled={disabled} headers={["Name", "Entity", "Location", "Expertise", "Date", "Firm"]} data={Dictionaries.propsals} />} />
+              <Section disabled={disabled}>
+                <SectionTitle>Propsals</SectionTitle>
+                <FieldArray name="propsals">{(props) => <Grids.PropsalsGrid disabled={disabled} values={values.propsals} push={props.push} remove={props.remove} />}</FieldArray>
+              </Section>
 
-              <SectionTitle>Internal reviews</SectionTitle>
-              {/* <GridField disabled={disabled} headers={["Name", "Entity", "Location", "Expertise", "Date"]} data={Dictionaries.internalReviews} /> */}
-              <SectionTitle>Amount of fees</SectionTitle>
-              {/* <GridField disabled={disabled} headers={["Year", "Cost center", "Total amount", "Law firm"]} data={Dictionaries.amountOfFees} /> */}
-            </fieldset>
+              <Section disabled={disabled}>
+                <SectionTitle>Internal reviews</SectionTitle>
+                <FieldArray name="internalReviews">{(props) => <Grids.InternalReviewsGrid disabled={disabled} values={values.internalReviews} push={props.push} remove={props.remove} />}</FieldArray>
+              </Section>
 
-            <EditButton toggleMode={setDisabled} />
+              <Section disabled={disabled}>
+                <SectionTitle>Amount of fees</SectionTitle>
+                <FieldArray name="amountOfFees">{(props) => <Grids.AmountOfFeesGrid disabled={disabled} values={values.amountOfFees} push={props.push} remove={props.remove} />}</FieldArray>
+              </Section>
+            </Fieldset>
+
+            <Sticky height={250}>
+              {" "}
+              <Button.EditGroup toggleMode={setDisabled} />
+            </Sticky>
           </Form>
         )}
       </Formik>
@@ -61,4 +84,4 @@ const FormComponent: React.VoidFunctionComponent = () => {
   );
 };
 
-export default FormComponent;
+export default React.memo(FormComponent);

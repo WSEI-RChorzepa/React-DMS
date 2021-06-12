@@ -11,6 +11,7 @@ export const Badge = styled(BadgeComponent)<{ readonly?: boolean }>`
   font-size: 12px;
   margin-right: 0.2rem;
   padding: 0.2rem 0.5rem;
+  border-radius: 2px;
   height: auto;
   top: 0;
 
@@ -51,6 +52,7 @@ const Field = styled.div`
   position: relative;
   ${Mixin.border()};
   height: ${Variables.Global.inputHeight};
+  background-color: #fff;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
@@ -58,6 +60,10 @@ const Field = styled.div`
 
   &:hover {
     cursor: pointer;
+  }
+
+  span:first-child {
+    margin-left: 3px;
   }
 `;
 
@@ -110,12 +116,14 @@ export const TagBox: React.VoidFunctionComponent<IProps> = ({ values, dictionary
       handleRemove(value);
     } else {
       push(value);
+      setOpen(false);
     }
   };
 
   const handleRemove = (value: string) => {
     const index = values.indexOf(value);
     remove(index);
+    setOpen(false);
   };
 
   return (

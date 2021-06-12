@@ -1,6 +1,6 @@
 import { useCallback } from "react";
 import { IDetailsProps } from "types";
-import * as Dictionary from "./dictionaries";
+import * as initialData from "./initialData";
 
 export const useDetails = () => {
   const initialValues: IDetailsProps = {
@@ -11,8 +11,10 @@ export const useDetails = () => {
     hourlyFee: "610€/hour ( Negociated )",
     termsAndConditions: "Monthly 10k€ retainer - see with Jeanny Smith",
     file: "",
-    propsals: Dictionary.propsals,
-    internalCorrespondants: Dictionary.internalCorrespondants,
+    internalCorrespondants: initialData.internalCorrespondants,
+    propsals: initialData.propsals,
+    internalReviews: initialData.internalReviews,
+    amountOfFees: initialData.amountOfFees,
   };
 
   const handleSubmit = useCallback((fields: IDetailsProps) => {

@@ -78,6 +78,8 @@ export interface IDetailsProps {
   file: string;
   propsals: IPropsals[];
   internalCorrespondants: IInternalCorrespondants[];
+  internalReviews: IInternalReviews[];
+  amountOfFees: IAmountOfFees[];
 }
 
 export interface IColumn {
@@ -85,6 +87,11 @@ export interface IColumn {
 }
 
 export type Collection = Array<{ [key: string]: string | number }>;
+
+export interface IInternalCorrespondants {
+  firstname: string;
+  lastName: string;
+}
 
 export interface IPropsals {
   name: string;
@@ -95,9 +102,17 @@ export interface IPropsals {
   firm: string;
 }
 
-export interface IInternalCorrespondants {
-  firstname: string;
-  lastName: string;
-  message: string;
-  profile: string;
+export interface IInternalReviews {
+  name: string;
+  entity: string;
+  location: string;
+  expertise: string;
+  date: string;
+}
+
+export interface IAmountOfFees {
+  year: number | string;
+  costCenter: string;
+  totalAmount: string;
+  lawFirm: string;
 }

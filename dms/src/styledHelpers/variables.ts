@@ -26,6 +26,7 @@ export const Color = {
   primary: "rgba(52, 152, 219,1.0)",
   danger: "rgba(231, 76, 60,1.0)",
   secondary: "#95a5a6",
+  info: "#16a085",
   silver: "#bdc3c7",
   border: "rgb(35 44 71 / 10%)",
   boxShadow: "rgb(35 44 71 / 10%)",

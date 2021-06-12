@@ -1,7 +1,6 @@
 import InputField from "./InputField";
 import SelectField from "./SelectField";
-import EditButton from "./EditButton";
 import TagBoxField from "./TagBoxField";
-import GridField from "./GridField";
+import * as Button from "./Buttons";
 
-export { InputField, SelectField, EditButton, TagBoxField, GridField };
+export { InputField, SelectField, TagBoxField, Button };

@@ -17,5 +17,6 @@ import Button from "./Button";
 import Flex from "./Flex";
 import Loader from "./Loader";
 import PageHeader from "./PageHeader";
+import Sticky from "./Sticky";
 
-export { Layout, Comments, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination, Spinner, Button, Flex, Loader, PageHeader };
+export { Layout, Comments, Navbar, Badge, Icon, Logo, Empty, Thumbnail, Link, Card, UserProfile, Label, Dot, Pagination, Spinner, Button, Flex, Loader, PageHeader, Sticky };

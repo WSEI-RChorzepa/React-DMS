@@ -7,7 +7,7 @@ import { ErrorMessage } from "./components";
 interface IProps {
   name: string;
   type: string;
-  placeholder: string;
+  placeholder?: string;
   label?: string;
 }
 
