@@ -9,6 +9,7 @@ interface IButtonProps {
   primary?: boolean;
   danger?: boolean;
   variant?: "info" | "primary" | "danger" | "default";
+  type?: "button" | "submit";
 }
 
 const StyledButton = styled.button<IButtonProps>`
@@ -96,7 +97,7 @@ const StyledButton = styled.button<IButtonProps>`
 
 const Button: React.FunctionComponent<IButtonProps> = (props) => {
   return (
-    <StyledButton selected={props.selected} size={props.size} onClick={props.onClick} variant={props.variant ? props.variant : "default"} type="button">
+    <StyledButton selected={props.selected} size={props.size} onClick={props.onClick} variant={props.variant ? props.variant : "default"} type={props.type ? props.type : "button"}>
       {props.danger && <span> Danger</span>}
       {props.children}
     </StyledButton>

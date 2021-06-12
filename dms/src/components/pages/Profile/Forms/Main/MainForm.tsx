@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
-import { Form, FormikProps, Formik } from "formik";
-import { IMainInformationProps } from "types";
+import { Form, Formik } from "formik";
 import { InputField, SelectField, Button } from "components/formik";
 import { schema } from "./validationSchema";
 import { PersonalInfo } from "../components";
@@ -15,7 +14,7 @@ const FormComponent: React.VoidFunctionComponent = () => {
   return (
     <>
       <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
-        {(props: FormikProps<IMainInformationProps>) => (
+        {() => (
           <Form ref={ref}>
             <fieldset disabled={disabled}>
               <PersonalInfo.Grid>

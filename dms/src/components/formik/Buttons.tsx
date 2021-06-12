@@ -38,7 +38,7 @@ export const Edit: VoidFunctionComponent<{ onClick: () => void }> = (props) => (
 );
 
 export const Save: VoidFunctionComponent<{ onClick: () => void }> = (props) => (
-  <Button variant="primary" onClick={props.onClick}>
+  <Button variant="primary" type="submit" onClick={props.onClick}>
     <FaSave /> Save
   </Button>
 );
@@ -57,7 +57,7 @@ export const Remove: VoidFunctionComponent<{ onClick: () => void }> = (props) =>
 
 export const EditGroup: VoidFunctionComponent<{ toggleMode: (open: boolean) => void }> = ({ toggleMode }) => {
   const [editMode, setEditMode] = useState(false);
-  const { submitForm, resetForm, isValid, errors } = useFormikContext();
+  const { submitForm, resetForm, isValid } = useFormikContext();
 
   const handleOpenEditMode = () => {
     setEditMode(true);
@@ -76,14 +76,7 @@ export const EditGroup: VoidFunctionComponent<{ toggleMode: (open: boolean) => v
       setEditMode(false);
       toggleMode(true);
     } else {
-      let message = "";
-      const errorsCollection = errors as { [key: string]: string };
-
-      for (let key in errorsCollection) {
-        message += `${errorsCollection[key]} <br>`;
-      }
-
-      toastr.error(`Please correct the following errors and submit the form again. <br><br> ${message}`, "Validation error.");
+      toastr.error(`Please correct the following errors and submit the form again.`, "Validation error.");
     }
   };
 

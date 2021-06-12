@@ -14,12 +14,12 @@ const FormComponent: React.VoidFunctionComponent = () => {
   const { initialValues, handleSubmit } = useDetails();
   const [disabled, setDisabled] = useState(true);
 
-  useEffect(() => {}, []);
+  useEffect(() => {});
 
   return (
     <>
-      <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit}>
-        {({ values, isValid, errors }: FormikProps<IDetailsProps>) => (
+      <Formik initialValues={initialValues} validationSchema={schema} onSubmit={handleSubmit} validateOnChange={true}>
+        {({ values, validateForm }: FormikProps<IDetailsProps>) => (
           <Form>
             <Fieldset disabled={disabled}>
               <Section disabled={disabled}>
